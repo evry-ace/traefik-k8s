@@ -3,22 +3,20 @@
 node('jenkins-docker-2') {
   ws {
     try {
+      def config = [
+        foo: 'bar'
+      ]
+
       stage('Checkout') {
         checkout scm
       }
 
-      stage('Test') {
-        docker.image('node:8-alpine').inside {
-          sh 'node --version'
-        }
-      }
-
-      /*stage("Deploy") {
-        kubernetesDeploy([:], [
+      stage("Deploy") {
+        kubernetesDeploy(config, [
           path: 'deploy',
           k8sCluster: 'kubernetes.starefossen.azure'
         ])
-      }*/
+      }
     } catch (InterruptedException e) {
       throw e
     } catch (e) {
