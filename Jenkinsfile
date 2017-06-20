@@ -4,7 +4,7 @@ properties([
   parameters([
     string(
       name: 'cluster',
-      defaultValue: 'kubernetes.starefossen.azure',
+      defaultValue: 'kubernetes.demo',
       description: 'The Kubernetes Cluster you want to deploy to',
     ),
   ])
