@@ -1,5 +1,15 @@
 #!groovy
 
+properties([
+  parameters([
+    string(
+      name: 'cluster',
+      defaultValue: 'kubernetes.starefossen.azure',
+      description: 'The Kubernetes Cluster you want to deploy to',
+    ),
+  ])
+])
+
 node('jenkins-docker-2') {
   ws {
     try {
