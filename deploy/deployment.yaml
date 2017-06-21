@@ -46,5 +46,15 @@ spec:
           containerPort: 8080
         args:
         - -d
-        - --web
         - --kubernetes
+        - --configFile=/etc/traefik/traefik.toml
+        volumeMounts:
+        - name: traefik-config
+          mountPath: /etc/traefik
+      volumes:
+      - name: traefik-config
+        configMap:
+          name: traefik-config
+          items:
+          - key: traefik.toml
+            path: traefik.toml
