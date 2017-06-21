@@ -12,7 +12,7 @@ data:
 
     InsecureSkipVerify = true
 
-    defaultEntryPoints = ["https"]
+    defaultEntryPoints = ["http", "https"]
 
     [entryPoints]
       [entryPoints.http]
@@ -23,6 +23,16 @@ data:
       [entryPoints.https]
       address = ":443"
         [entryPoints.https.tls]
+
+    [acme]
+    acmeLogging = true
+
+    email = "${ACEME_EMAIL}"
+    storageFile = "/data/traefik/acme.json"
+    entryPoint = "https"
+
+    onDemand = false
+    OnHostRule = true
 
     [web]
     address = ":8080"

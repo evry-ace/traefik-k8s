@@ -7,6 +7,11 @@ properties([
       defaultValue: 'kubernetes.demo',
       description: 'The Kubernetes Cluster you want to deploy to',
     ),
+    string(
+      name: 'ACEME_EMAIL',
+      defaultValue: 'hans.flaatten@evry.com',
+      description: 'LetsEncrypt ACEME registration email',
+    ),
   ])
 ])
 
@@ -16,6 +21,7 @@ node('jenkins-docker-2') {
       def conf = [
         TRAEFIK_VERSION: 'v1.0.0',
         JENKINS_DEPLOY: 'true',
+        ACEME_EMAIL: env.ACEME_EMAIL,
       ]
 
       stage('Checkout') {
