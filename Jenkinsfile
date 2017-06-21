@@ -3,7 +3,7 @@
 properties([
   parameters([
     string(
-      name: 'cluster',
+      name: 'K8S_CLUSTER',
       defaultValue: 'kubernetes.demo',
       description: 'The Kubernetes Cluster you want to deploy to',
     ),
@@ -13,8 +13,9 @@ properties([
 node('jenkins-docker-2') {
   ws {
     try {
-      def config = [
-        foo: 'bar'
+      def conf = [
+        TRAEFIK_VERSION: 'v1.0.0',
+        JENKINS_DEPLOY: 'true',
       ]
 
       stage('Checkout') {
@@ -22,10 +23,9 @@ node('jenkins-docker-2') {
       }
 
       stage("Deploy") {
-        kubernetesDeploy(config, [
-          path: 'deploy',
-          k8sCluster: 'kubernetes.starefossen.azure'
-        ])
+        def Boolean dryrun = conf.JENKINS_DEPLOY != 'true'
+
+        kubernetesDeploy(conf, [k8sCluster: env.K8S_CLUSTER, dryrun: dryrun])
       }
     } catch (InterruptedException e) {
       throw e
