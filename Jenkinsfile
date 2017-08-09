@@ -19,7 +19,7 @@ node('jenkins-docker-3') {
   ws {
     try {
       def conf = [
-        TRAEFIK_VERSION: 'v1.0.0',
+        TRAEFIK_VERSION: 'v1.3.5',
         JENKINS_DEPLOY: 'true',
         ACEME_EMAIL: env.ACEME_EMAIL,
       ]
