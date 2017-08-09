@@ -15,7 +15,7 @@ properties([
   ])
 ])
 
-node('jenkins-docker-2') {
+node('jenkins-docker-3') {
   ws {
     try {
       def conf = [
