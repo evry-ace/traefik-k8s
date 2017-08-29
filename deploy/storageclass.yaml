@@ -2,7 +2,7 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:
  name: slow
- namespace: kube-system
+ namespace: "${K8S_NAMESPACE}"
 provisioner: kubernetes.io/azure-disk
 parameters:
  skuName: Standard_LRS

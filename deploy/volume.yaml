@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: traefik-volume
-  namespace: kube-system
+  namespace: "${K8S_NAMESPACE}"
   annotations:
     volume.beta.kubernetes.io/storage-class: slow
 spec:

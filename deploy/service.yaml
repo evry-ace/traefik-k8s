@@ -2,10 +2,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: traefik-ingress-controller
-  namespace: kube-system
+  name: "${K8S_NAME}"
+  namespace: "${K8S_NAMESPACE}"
   labels:
-    k8s-app: traefik-ingress-lb
+    k8s-app: "${K8S_APP}"
   annotations:
     prometheus.io/path: "/metrics"
     prometheus.io/port: "8181"

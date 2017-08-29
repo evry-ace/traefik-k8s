@@ -3,7 +3,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: traefik-config
-  namespace: kube-system
+  namespace: "${K8S_NAMESPACE}"
 data:
   traefik.toml: |-
     checkNewVersion = false
