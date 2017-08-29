@@ -6,6 +6,10 @@ metadata:
   namespace: kube-system
   labels:
     k8s-app: traefik-ingress-lb
+  annotations:
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "8181"
+    prometheus.io/scrape: "true"
 spec:
   selector:
     k8s-app: traefik-ingress-lb
