@@ -57,6 +57,8 @@ spec:
           mountPath: /etc/traefik
         - name: traefik-volume
           mountPath: /data/traefik
+        - name: traefik-ssl
+          mountPath: /etc/tls
       volumes:
       - name: traefik-config
         configMap:
@@ -67,3 +69,6 @@ spec:
       - name: traefik-volume
         persistentVolumeClaim:
           claimName: traefik-volume
+      - name: traefik-ssl
+        secret:
+          secretName: traefik-ssl
