@@ -4,7 +4,7 @@ properties([
   parameters([
     string(
       name: 'K8S_CLUSTER',
-      defaultValue: 'kubernetes.demo',
+      defaultValue: 'kubernetes.ace.dev',
       description: 'The Kubernetes Cluster you want to deploy to',
     ),
     string(
@@ -33,12 +33,15 @@ node('jenkins-docker-3') {
       // configurations are stored in the /build directory and controles the
       // Jenkins build and Kubernetes deployment.
       def envPatterns = [
-        [env: 'prod', regex: /^master$/],
+        [env: 'prod', regex: /^master$/]
       ]
 
       config = new Config(this).branchProperties(envPatterns)
-      config.ACEME_EMAIL = env.ACEME_EMAIL
-      config.K8S_CLUSTER = env.K8S_CLUSTER
+
+      [ 'K8S_CLUSTER',
+        'ACEME_EMAIL'
+      ].eachWithIndex { item, index -> config[item] = env[item] }
+
 
       stage("Deploy") {
         def Boolean dryrun = config.JENKINS_DEPLOY != 'true'

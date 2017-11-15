@@ -23,9 +23,6 @@ data:
       [entryPoints.https]
       address = ":443"
         [entryPoints.https.tls]
-          [[entryPoints.https.tls.certificates]]
-          CertFile = "/etc/tls/skjema-danica-no.crt"
-          KeyFile = "/etc/tls/skjema-danica-no.key"
 
     [acme]
     acmeLogging = true
