@@ -26,6 +26,8 @@ data:
 
     [acme]
     acmeLogging = true
+      [acme.httpChallenge]
+      entryPoint = "http"
 
     email = "${ACEME_EMAIL}"
     storageFile = "/data/traefik/acme.json"
