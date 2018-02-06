@@ -26,7 +26,6 @@ data:
 
     [acme]
     acmeLogging = true
-
     email = "${ACEME_EMAIL}"
     storageFile = "/data/traefik/acme.json"
     entryPoint = "https"
@@ -34,6 +33,8 @@ data:
     onDemand = false
     OnHostRule = true
 
+      [acme.httpChallenge]
+        entryPoint = "http"
     [web]
     address = ":8080"
     
