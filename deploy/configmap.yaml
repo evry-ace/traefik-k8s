@@ -37,6 +37,9 @@ data:
         entryPoint = "http"
     [web]
     address = ":8080"
-
+    
+    [accessLog]
+    format = "json"
+     
     [web.metrics.prometheus]
     Buckets=[0.1,0.3,1.2,5.0]
