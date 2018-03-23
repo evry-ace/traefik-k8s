@@ -8,7 +8,7 @@ properties([
       description: 'The Kubernetes Cluster you want to deploy to',
     ),
     string(
-      name: 'ACEME_EMAIL',
+      name: 'ACME_EMAIL',
       defaultValue: 'hans.flaatten@evry.com',
       description: 'LetsEncrypt ACEME registration email',
     ),
@@ -39,7 +39,7 @@ node('jenkins-docker-3') {
       config = new Config(this).branchProperties(envPatterns)
 
       [ 'K8S_CLUSTER',
-        'ACEME_EMAIL'
+        'ACME_EMAIL'
       ].eachWithIndex { item, index -> config[item] = env[item] }
 
 

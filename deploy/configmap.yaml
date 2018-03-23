@@ -30,7 +30,7 @@ data:
 
     [acme]
     acmeLogging = true
-    email = "${ACEME_EMAIL}"
+    email = "${ACME_EMAIL}"
     storageFile = "/data/traefik/acme.json"
     entryPoint = "https"
 
