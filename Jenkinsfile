@@ -12,6 +12,11 @@ properties([
       defaultValue: 'hans.flaatten@evry.com',
       description: 'LetsEncrypt ACEME registration email',
     ),
+    string(
+      name: 'K8S_INTERNAL_LB',
+      defaultValue: 'false',
+      description: 'Use internal load balancer. IE not on the internet',
+    )
   ])
 ])
 
@@ -39,7 +44,8 @@ node('jenkins-docker-3') {
       config = new Config(this).branchProperties(envPatterns)
 
       [ 'K8S_CLUSTER',
-        'ACME_EMAIL'
+        'ACME_EMAIL',
+        'K8S_INTERNAL_LB'
       ].eachWithIndex { item, index -> config[item] = env[item] }
 
 

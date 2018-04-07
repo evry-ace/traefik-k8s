@@ -10,6 +10,7 @@ metadata:
     prometheus.io/path: "/metrics"
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "${K8S_INTERNAL_LB}"
 spec:
   selector:
     k8s-app: traefik-ingress-lb
