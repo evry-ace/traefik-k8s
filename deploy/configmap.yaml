@@ -7,9 +7,7 @@ metadata:
 data:
   traefik.toml: |-
     checkNewVersion = false
-
     logLevel = "WARN"
-
     InsecureSkipVerify = true
 
     defaultEntryPoints = ["http", "https"]
@@ -17,16 +15,12 @@ data:
     [entryPoints]
       [entryPoints.http]
       address = ":80"
-        [entryPoints.http.redirect]
-        entryPoint = "https"
+      [entryPoints.http.redirect]
+      entryPoint = "https"
 
       [entryPoints.https]
       address = ":443"
         [entryPoints.https.tls]
-          [[entryPoints.https.tls.certificates]]
-          CertFile = "/etc/tls/skjema-danica-no.crt"
-          KeyFile = "/etc/tls/skjema-danica-no.key"
-
 
     [acme]
     acmeLogging = true
@@ -41,9 +35,9 @@ data:
         entryPoint = "http"
     [web]
     address = ":8080"
-    
+
     [accessLog]
     format = "json"
-     
+
     [web.metrics.prometheus]
     Buckets=[0.1,0.3,1.2,5.0]
