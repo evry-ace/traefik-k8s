@@ -7,7 +7,9 @@ metadata:
 data:
   traefik.toml: |-
     checkNewVersion = false
+
     logLevel = "WARN"
+
     InsecureSkipVerify = true
 
     defaultEntryPoints = ["http", "https"]
@@ -15,8 +17,8 @@ data:
     [entryPoints]
       [entryPoints.http]
       address = ":80"
-      [entryPoints.http.redirect]
-      entryPoint = "https"
+        [entryPoints.http.redirect]
+        entryPoint = "https"
 
       [entryPoints.https]
       address = ":443"
