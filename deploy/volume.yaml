@@ -5,7 +5,7 @@ metadata:
   name: traefik-volume
   namespace: "${K8S_NAMESPACE}"
   annotations:
-    volume.beta.kubernetes.io/storage-class: slow
+    volume.beta.kubernetes.io/storage-class: "${K8S_DISK_TYPE}"
 spec:
   accessModes:
   - ReadWriteOnce

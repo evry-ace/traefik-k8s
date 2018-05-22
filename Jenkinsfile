@@ -16,6 +16,11 @@ properties([
       name: 'K8S_INTERNAL_LB',
       defaultValue: 'false',
       description: 'Use internal load balancer. IE not on the internet',
+    ),
+    string(
+      name: 'K8S_DISK_TYPE',
+      defaultValue: 'slow',
+      description: 'Use internal load balancer. IE not on the internet',
     )
   ])
 ])
@@ -45,7 +50,8 @@ node('jenkins-docker-3') {
 
       [ 'K8S_CLUSTER',
         'ACME_EMAIL',
-        'K8S_INTERNAL_LB'
+        'K8S_INTERNAL_LB',
+        'K8S_DISK_TYPE'
       ].eachWithIndex { item, index -> config[item] = env[item] }
 
 
